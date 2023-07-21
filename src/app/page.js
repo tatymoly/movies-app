@@ -1,7 +1,9 @@
+import { Button } from "@mui/material"
+
 export default function Home() {
   return (
     <main>
-      <p>My Dashboard</p>
+      <Button variant="contained">Contained</Button>
     </main>
   )
 }
