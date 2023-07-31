@@ -3,8 +3,10 @@
 import "./globals.css"
 import { theme } from "../theme/theme"
 import { ThemeProvider, CssBaseline } from "@mui/material"
+import ResponsiveAppBar from "../components/appBar"
 
 export default function RootLayout({ children }) {
+  console.log({children})
   return (
     <html lang="en">
       <head>
@@ -14,7 +16,10 @@ export default function RootLayout({ children }) {
       </head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <body>{children}</body>
+        <body>
+          <ResponsiveAppBar/>
+          {children}
+        </body>        
       </ThemeProvider>
     </html>
   );
