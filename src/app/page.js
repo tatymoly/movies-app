@@ -9,6 +9,9 @@ export default function TodoForm() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
   const handleClick = () => {
+    if(!input) {
+      return;
+    }
     const newTodo = {
       id: new Date().getTime(),
       text: input,
@@ -32,17 +35,18 @@ export default function TodoForm() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            width: "300px",
+            width: "315px",
           }}
         >
           <TextField
+            id="text-field"
             size="small"
             label="Add task..."
             variant="outlined"
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
-          <Button variant="contained" onClick={() => handleClick()}>
+          <Button variant="contained" onClick={handleClick}>
             Add To do
           </Button>
         </div>
