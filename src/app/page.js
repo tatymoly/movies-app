@@ -17,12 +17,12 @@ export default function TodoForm() {
       text: input,
       completed: false,
     };
-    setTodos([...todos].concat(newTodo));
+    setTodos([...todos, newTodo]);
     setInput("");
   };
 
   const deleteTodo = (id) => {
-    const updatedTodos = [...todos].filter((input) => input.id !== id);
+    const updatedTodos = todos.filter((task)=> task.id !== id);
     setTodos(updatedTodos);
   };
 
@@ -51,11 +51,11 @@ export default function TodoForm() {
           </Button>
         </div>
         <List>
-          {todos.map((input) => (
-            <ListItem key={input.id} disablePadding>
-              {input.text}
+          {todos.map((task) => (
+            <ListItem key={task.id} disablePadding>
+              {task.text}
               
-              <IconButton aria-label="delete" onClick={() => deleteTodo(input.id)} >
+              <IconButton aria-label="delete" onClick={() => deleteTodo(task.id)} >
                 <Delete />
               </IconButton>
             </ListItem>
