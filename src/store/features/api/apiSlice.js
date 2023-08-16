@@ -3,15 +3,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const apiSlice = createApi({
   reducerPath: 'moviesApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://moviesdatabase.p.rapidapi.com',
+    baseUrl: `https://${process.env.NEXT_PUBLIC_MOVIES_APP_HOST}`,
     prepareHeaders: (headers) => {
-        headers.set('X-RapidAPI-Key', '');
-        headers.set('X-RapidAPI-Host', 'moviesdatabase.p.rapidapi.com');
+        headers.set('X-RapidAPI-Key', `${process.env.NEXT_PUBLIC_MOVIES_APP_KEY}`);
+        headers.set('X-RapidAPI-Host', `${process.env.NEXT_PUBLIC_MOVIES_APP_HOST}`);
     }
   }),
   endpoints: (builder) => ({
     getMovies: builder.query({
-      query: (params) => `/titles?startYear=2022&list=most_pop_movies&${params}`,
+      query: (params) => `/titles?${params}`,
     }),
   }),
 });
