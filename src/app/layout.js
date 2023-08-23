@@ -1,12 +1,14 @@
 "use client"
 
 import "./globals.css"
-import { theme } from "../theme/theme"
 import { ThemeProvider, CssBaseline } from "@mui/material"
-import ResponsiveAppBar from "../components/appBar"
+import { theme } from "@/theme/theme"
+import { store } from "@/store/store"
+import { Provider } from "react-redux";
+
+import ResponsiveAppBar from "@/components/appBar"
 
 export default function RootLayout({ children }) {
-  console.log({children})
   return (
     <html lang="en">
       <head>
@@ -17,9 +19,11 @@ export default function RootLayout({ children }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <body>
-          <ResponsiveAppBar/>
-          {children}
-        </body>        
+          <Provider store={store}>
+            <ResponsiveAppBar />
+            {children}
+          </Provider>
+        </body>
       </ThemeProvider>
     </html>
   );
